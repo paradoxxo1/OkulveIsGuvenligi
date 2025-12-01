@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://fonts.googleapis.com/css2?family:Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <title>Bakım Onay Formu</title>
+
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/templatemo-woox-travel.css">
+
+  <style>
+    /* Apple Style Eklentiler */
+    body {
+      background: #f5f5f7 !important;
+      font-family: 'Poppins', sans-serif;
+      color: #1d1d1f;
+    }
+
+    .info-item {
+      background: #ffffff !important;
+      padding: 25px;
+      border-radius: 22px;
+      text-align: center;
+      margin-top: 25px;
+      box-shadow: 0px 8px 22px rgba(0, 0, 0, 0.06);
+      transition: 0.2s;
+    }
+
+    .info-item:hover {
+      transform: translateY(-5px);
+    }
+
+    iframe {
+      border-radius: 26px !important;
+      box-shadow: 0px 8px 28px rgba(0, 0, 0, 0.15);
+    }
+
+    .form-card {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 45px;
+      box-shadow: 0px 10px 35px rgba(0, 0, 0, 0.09);
+      margin-top: 40px;
+      margin-bottom: 70px;
+    }
+
+    input,
+    select {
+      border-radius: 14px !important;
+      padding: 15px !important;
+      border: 1px solid #d1d1d6 !important;
+      background: #fafafa !important;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: #0071e3 !important;
+      box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.18) !important;
+    }
+
+    .main-button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 16px 0;
+      background: #0071e3;
+      border-radius: 16px;
+      color: white !important;
+      font-weight: 600;
+      font-size: 18px;
+      transition: 0.25s;
+      border: none;
+    }
+
+    .main-button:hover {
+      background: #005bbf;
+      transform: translateY(-3px);
+    }
+
+
+    /* ------------------------ */
+    /* 📌 APPLE TARZI MODAL */
+    /* ------------------------ */
+    .apple-modal-bg {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(6px);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .apple-modal {
+      background: #ffffff;
+      border-radius: 26px;
+      padding: 40px;
+      text-align: center;
+      width: 90%;
+      max-width: 420px;
+      box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.15);
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.92);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .modal-button {
+      margin-top: 25px;
+      background: #0071e3;
+      color: white;
+      border: none;
+      padding: 14px 0;
+      width: 100%;
+      border-radius: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      transition: 0.25s;
+    }
+
+    .modal-button:hover {
+      background: #005bbf;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- ***** HEADER (ASLA DEĞİŞMEDİ) ***** -->
+  <header class="header-area header-sticky">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <a href="index.html" class="logo">
+              <img src="assets/images/logo.png" alt="">
+            </a>
+
+            <ul class="nav">
+              <li><a href="index.html">ANA SAYFA</a></li>
+              <li><a href="BakımOnay.html" class="active">FORM</a></li>
+              <li><a href="kategoriler.html">KATEGORİLER</a></li>
+              <li><a href="hakkimizda.html">HAKKIMIZDA</a></li>
+            </ul>
+
+            <a class='menu-trigger'>
+              <span>Menu</span>
+            </a>
+
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- ***** HEADER END ***** -->
+
+  <div class="second-page-heading">
+    <div class="container">
+      <h2>BAKIM KONTROL FORMU</h2>
+    </div>
+  </div>
+
+  <!-- INFO BOXES -->
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-4 col-sm-6">
+        <div class="info-item">
+          <i class="fa fa-phone"></i>
+          <h4>TELEFON</h4>
+          <a href="#">+90 (0326) 999 13 91</a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-sm-6">
+        <div class="info-item">
+          <i class="fa fa-envelope"></i>
+          <h4>MAİL</h4>
+          <a href="#">bahcesehir.belen@gmail.com</a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-sm-6">
+        <div class="info-item">
+          <i class="fa fa-instagram"></i>
+          <h4>İNSTAGRAM</h4>
+          <a href="#">@bahcesehir_belen</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- STREET VIEW -->
+  <div class="container mt-5">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!4v0!6m8!1m7!1sDEc20pYKHeoBlyUjNBy5jQ!2m2!1d36.5310065!2d36.1482308!3f276.13!4f0!5f1"
+      width="100%" height="450" loading="lazy">
+    </iframe>
+  </div>
+
+ <!-- FORM -->
+<div class="container">
+  <div class="form-card">
+
+    <h3 style="font-weight: 600; margin-bottom: 35px; text-align:center;">
+      Bakım <em>Onay</em> Formu
+    </h3>
+
+    <form id="bakimForm" action="/form-gonder" method="POST">
+
+
+      <div class="row g-4">
+
+        <div class="col-lg-6">
+          <label>Bakım Yapan Kişi</label>
+          <input type="text" name="bakim_yapan" class="form-control apple-input" placeholder="Örn. Enver Yücel" required>
+        </div>
+
+        <div class="col-lg-6">
+          <label>Onaylayan Kişi</label>
+          <input type="text" name="onaylayan" class="form-control apple-input" placeholder="Örn. Mustafa Uçan" required>
+        </div>
+
+        <div class="col-lg-6">
+          <label>Firma</label>
+          <input type="text" name="firma" class="form-control apple-input" placeholder="Örn. BK Asansör" required>
+        </div>
+
+        <div class="col-lg-6">
+          <label>Saat</label>
+          <select name="saat" class="form-select apple-input" required>
+            <option disabled selected>Örn. 12.00</option>
+            <option>10.00</option>
+            <option>11.00</option>
+            <option>12.00</option>
+            <option>13.00</option>
+            <option>14.00</option>
+            <option>15.00</option>
+          </select>
+        </div>
+
+        <div class="col-lg-6">
+          <label>Tarih</label>
+          <input type="date" name="tarih" class="form-control apple-input" required>
+        </div>
+
+        <div class="col-lg-12 mt-3">
+          <button type="submit" class="main-button">Onaylayınız</button>
+        </div>
+
+      </div>
+    </form>
+
+  </div>
+</div>
+
+
+
+  <!-- ----------------------------- -->
+  <!-- 📌 APPLE TARZI MODAL (POPUP) -->
+  <!-- ----------------------------- -->
+  <div class="apple-modal-bg" id="alertModal">
+    <div class="apple-modal">
+      <h3 style="font-weight:600;">İşleminiz Onaylanmıştır ✔</h3>
+      <p style="margin-top:10px; font-size:15px; color:#555;">
+        Bilgileriniz başarıyla gönderildi.
+      </p>
+
+      <button class="modal-button" onclick="closeModal()">Tamam</button>
+    </div>
+  </div>
+
+
+  <!-- ----------------------------- -->
+  <!-- 📌 JAVASCRIPT -->
+  <!-- ----------------------------- -->
+<!-- ----------------------------- -->
+<!-- 📌 JAVASCRIPT -->
+<!-- ----------------------------- -->
+<script>
+  const form = document.getElementById("bakimForm");
+  const modal = document.getElementById("alertModal");
+
+  // Form gönderimi
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault(); // Sayfa yenilenmesin
+
+    // Form verilerini al
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch("http://localhost:3000/form-gonder", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        modal.style.display = "flex"; // Modal aç
+      } else {
+        alert("Mail gönderilemedi!");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Sunucu hatası!");
+    }
+  });
+
+  // Modal kapatma fonksiyonu
+  function closeModal() {
+    modal.style.display = "none";
+    form.reset(); // Formu sıfırla
+  }
+</script>
+
+
+</body>
+
+</html>
+
+

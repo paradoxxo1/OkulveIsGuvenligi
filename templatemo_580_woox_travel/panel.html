@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Kullanıcı Paneli | EduSafe</title>
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+</head>
+
+<body class="p-5">
+
+  <h2>Hoş geldin, <span id="name"></span> 👋</h2>
+  <a class="btn btn-danger mt-3" href="#" onclick="logout()">Çıkış Yap</a>
+
+  <script>
+    const user = localStorage.getItem("activeUser");
+    if (!user) location.href = "girissistemi.html";
+
+    name.innerHTML = user;
+
+    function logout() {
+      localStorage.removeItem("activeUser");
+      location.href = "girissistemi.html";
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Paneli</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      display: flex;
+      background: #1f1f1f;
+      color: #fff;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 250px;
+      height: 100vh;
+      background: #141414;
+      padding: 20px;
+      position: fixed;
+      left: 0;
+      top: 0;
+      transition: .3s;
+    }
+
+    .sidebar.closed {
+      width: 70px;
+    }
+
+    .sidebar h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .sidebar ul li {
+      margin: 20px 0;
+    }
+
+    .sidebar ul li a {
+      text-decoration: none;
+      color: #fff;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      border-radius: 8px;
+      transition: 0.2s;
+    }
+
+    .sidebar ul li a:hover {
+      background: #333;
+    }
+
+    .sidebar.closed a span {
+      display: none;
+    }
+
+    /* Content */
+    .content {
+      margin-left: 250px;
+      padding: 30px;
+      width: 100%;
+      transition: .3s;
+    }
+
+    .sidebar.closed~.content {
+      margin-left: 80px;
+    }
+
+    /* Navbar */
+    .topbar {
+      width: 100%;
+      height: 60px;
+      background: #141414;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+    }
+
+    /* Dashboard cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #2b2b2b;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .chart-box {
+      margin-top: 40px;
+      background: #2b2b2b;
+      padding: 20px;
+      border-radius: 12px;
+    }
+
+    /* USER PANEL */
+    .user-panel {
+      display: none;
+      margin-top: 40px;
+    }
+
+    .user-panel.active {
+      display: block;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #2b2b2b;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background: #3a3a3a;
+    }
+
+    tr:nth-child(even) {
+      background: #242424;
+    }
+
+    .btn-add {
+      background: #4caf50;
+      color: #fff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-bottom: 15px;
+    }
+
+    .btn-delete {
+      padding: 6px 12px;
+      background: #e74c3c;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .btn-role {
+      padding: 6px 12px;
+      background: #3498db;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    /* INDEX EDITOR */
+    #editorPanel {
+      display: none;
+      margin-top: 40px;
+    }
+
+    #editorPanel.active {
+      display: block;
+    }
+
+    textarea {
+      width: 100%;
+      height: 450px;
+      background: #111;
+      color: #0f0;
+      padding: 15px;
+      font-size: 14px;
+      border-radius: 10px;
+      outline: none;
+    }
+
+    .save-btn {
+      margin-top: 10px;
+      padding: 12px 20px;
+      background: #27ae60;
+      border: none;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      /* POPUP TASARIMI */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.popup-box {
+  background: #2b2b2b;
+  padding: 25px;
+  width: 350px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,.5);
+  animation: fadeIn .3s ease;
+}
+
+.popup-box input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 6px;
+  border: none;
+}
+
+.btn-save {
+  width: 100%;
+  padding: 10px;
+  background: #27ae60;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-close {
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  float: right;
+  margin-top: 10px;
+}
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar" id="sidebar">
+    <h2>Admin</h2>
+    <ul>
+      <li><a onclick="showDashboard()"><i class="fa fa-home"></i><span>Dashboard</span></a></li>
+      <li><a onclick="showUsers()"><i class="fa fa-users"></i><span>Kullanıcı Yönetimi</span></a></li>
+      <li><a onclick="showEditor()"><i class="fa fa-file-code"></i><span>index.html Düzenle</span></a></li>
+      <li><a href="index.html"><i class="fa fa-sign-out"></i><span>Çıkış Yap</span></a></li>
+    </ul>
+  </div>
+
+  <div class="content">
+    <div class="topbar">
+      <i class="fa fa-bars" onclick="toggleSidebar()"></i>
+      Admin Paneli
+    </div>
+
+    <!-- DASHBOARD -->
+    <div id="dashboard">
+      <div class="cards">
+        <div class="card"><h3>Toplam Kullanıcı</h3><p id="countUsers">0</p></div>
+        <div class="card"><h3>Admin Sayısı</h3><p id="countAdmins">0</p></div>
+        <div class="card"><h3>Sistem Log</h3><p>Aktif</p></div>
+      </div>
+
+      <div class="chart-box">
+        <h3>Sistem Grafiği</h3>
+        <canvas id="myChart"></canvas>
+      </div>
+    </div>
+
+    <!-- USER PANEL -->
+    <div id="userPanel" class="user-panel">
+      <h2>Kullanıcı Listesi</h2>
+      <button class="btn-add" onclick="openPopup()">+ Yeni Kullanıcı</button>
+
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Kullanıcı Adı</th>
+            <th>Rol</th>
+            <th>İşlem</th>
+          </tr>
+        </thead>
+        <tbody id="userTable"></tbody>
+      </table>
+    </div>
+
+    <!-- INDEX.HTML EDITOR -->
+    <div id="editorPanel">
+      <h2>index.html Düzenleme</h2>
+
+      <textarea id="editor"></textarea>
+      <button class="save-btn" onclick="saveIndex()">Kaydet</button>
+    </div>
+
+  </div>
+
+  <!-- ADD USER POPUP -->
+<div class="popup" id="popup" style="display:none;">
+  <div class="popup-box">
+    <h3>Yeni Kullanıcı</h3>
+    <input type="text" id="newUser" placeholder="Kullanıcı adı">
+    <input type="password" id="newPass" placeholder="Şifre">
+
+    <button class="btn-save" onclick="addUser()">Kaydet</button>
+    <button class="btn-close" onclick="closePopup()">Kapat</button>
+  </div>
+</div>
+
+  <script>
+
+    /* --------------- GİRİŞ KONTROLÜ --------------- */
+    const activeUser = JSON.parse(localStorage.getItem("activeUser") || "{}");
+
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
+
+    const adminAccount = {
+      username: "admin",
+      password: "12345",
+      role: "admin"
+    };
+
+    // Eğer "admin" yoksa ekle
+    if (!users.find(u => u.username === "admin")) {
+      users.push(adminAccount);
+      localStorage.setItem("users", JSON.stringify(users));
+    }
+
+    const currentUser = users.find(u => u.username === activeUser.username);
+
+
+    if (!currentUser || currentUser.role !== "admin") {
+      window.location.href = "index.html"; // admin değilse çıkart
+    }
+
+    /* --------------- SIDEBAR --------------- */
+    function toggleSidebar() {
+      document.getElementById("sidebar").classList.toggle("closed");
+    }
+
+    /* --------------- PANEL GEÇİŞLERİ --------------- */
+    function showDashboard() {
+      hideAll();
+      document.getElementById("dashboard").style.display = "block";
+    }
+
+    function showUsers() {
+      hideAll();
+      document.getElementById("userPanel").classList.add("active");
+      renderUsers();
+    }
+
+    function showEditor() {
+      hideAll();
+      document.getElementById("editorPanel").classList.add("active");
+
+      let saved = localStorage.getItem("indexFile");
+
+      fetch("index.html")
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById("editor").value = saved || data;
+        });
+    }
+
+    function hideAll() {
+      document.getElementById("dashboard").style.display = "none";
+      document.getElementById("userPanel").classList.remove("active");
+      document.getElementById("editorPanel").classList.remove("active");
+    }
+
+    /* --------------- KULLANICI SİSTEMİ --------------- */
+    function renderUsers() {
+      let table = document.getElementById("userTable");
+      table.innerHTML = "";
+
+      users.forEach((u, index) => {
+        table.innerHTML += `
+          <tr>
+            <td>${index + 1}</td>
+            <td>${u.username}</td>
+            <td>${u.role}</td>
+            <td>
+              <button class="btn-role" onclick="toggleRole(${index})">Rol Değiştir</button>
+              <button class="btn-delete" onclick="deleteUser(${index})">Sil</button>
+            </td>
+          </tr>
+        `;
+      });
+
+      document.getElementById("countUsers").innerText = users.length;
+      document.getElementById("countAdmins").innerText = users.filter(u => u.role === "admin").length;
+    }
+
+    function toggleRole(index) {
+      if (users[index].role === "admin") {
+        users[index].role = "user";
+      } else {
+        users[index].role = "admin";
+      }
+
+      localStorage.setItem("users", JSON.stringify(users));
+      renderUsers();
+    }
+
+    function deleteUser(index) {
+      if (confirm("Kullanıcıyı silmek istediğine emin misin?")) {
+        users.splice(index, 1);
+        localStorage.setItem("users", JSON.stringify(users));
+        renderUsers();
+      }
+    }
+
+    function openPopup() {
+  document.getElementById("popup").style.display = "flex";
+}
+
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}
+
+function addUser() {
+  let u = document.getElementById("newUser").value;
+  let p = document.getElementById("newPass").value;
+
+  if (!u || !p) {
+    alert("Lütfen tüm alanları doldurun!");
+    return;
+  }
+
+  users.push({
+    username: u,
+    password: p,
+    role: "user"
+  });
+
+  localStorage.setItem("users", JSON.stringify(users));
+
+  alert("Kullanıcı başarıyla eklendi!");
+
+  closePopup();
+  renderUsers();
+}
+
+    /* --------------- INDEX.HTML KAYDETME --------------- */
+    function saveIndex() {
+      const content = document.getElementById("editor").value;
+      localStorage.setItem("indexFile", content);
+      alert("index.html başarıyla kaydedildi!");
+    }
+
+    /* --------------- CHART --------------- */
+    new Chart(document.getElementById("myChart"), {
+      type: "line",
+      data: {
+        labels: ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs"],
+        datasets: [{
+          label: "Sistem Durumu",
+          data: [12, 9, 14, 7, 16],
+          borderWidth: 3
+        }]
+      }
+    });
+
+  </script>
+
+</body>
+
+</html>

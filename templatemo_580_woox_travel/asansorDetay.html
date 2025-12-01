@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Asansör Bakım Detayları</title>
+
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/fontawesome.css">
+  <link rel="stylesheet" href="assets/css/templatemo-woox-travel.css">
+  <link rel="stylesheet" href="assets/css/owl.css">
+  <link rel="stylesheet" href="assets/css/animate.css">
+</head>
+
+<body>
+  <header class="header-area header-sticky">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <a href="index.html" class="logo">
+              <img src="assets/images/logo.png" alt="">
+            </a>
+            <ul class="nav">
+              <li><a href="index.html">ANA SAYFA</a></li>
+              <li><a href="BakımOnay.html" class="active">FORM</a></li>
+              <li><a href="kategoriler.html">KATEGORİLER</a></li>
+              <li><a href="hakkimizda.html">HAKKIMIZDA</a></li>
+            </ul>
+            <a class='menu-trigger'><span>Menu</span></a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container mt-5 pt-4">
+    <h2 class="text-center mb-4">Asansör Bakım Detayları</h2>
+
+    <div class="table-responsive mb-4">
+      <table class="table table-bordered table-striped">
+        <thead class="table-warning">
+          <tr>
+            <th>Kontrol Başlığı</th>
+            <th>Uygun</th>
+            <th>Bakımı Yapıldı</th>
+            <th>Bakım Tarihi</th>
+          </tr>
+        </thead>
+        <tbody id="table-body">
+          <!-- JS ile doldurulacak -->
+        </tbody>
+      </table>
+    </div>
+
+    <ul class="pagination justify-content-center mt-4">
+      <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+      <li class="page-item"><a class="page-link" href="?page=2">2</a></li>
+      <li class="page-item"><a class="page-link" href="?page=3">3</a></li>
+      <li class="page-item"><a class="page-link" href="?page=4">4</a></li>
+      <li class="page-item"><a class="page-link" href="?page=5">5</a></li>
+    </ul>
+
+    <div class="text-center mt-4">
+      <a href="index.html" class="btn btn-warning">← Geri Dön</a>
+    </div>
+  </div>
+
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const rows = [
+      "Rayların temizliği ve kontrolü",
+      "Rayların yağ kontrolü",
+      "Denge ağırlığı ve paten kontrolü",
+      "Motor kontrolü",
+      "Kasnak kontrolü",
+      "Motor kontrolü (Makine Dairesi)",
+      "Kasnak kontrolü (Makine Dairesi)",
+      "Kapı makara kontrolü",
+      "Kilit kontrolü",
+      "Ana şalter kontrolü",
+      "Röle kontrolü",
+      "Tüm bakım tamamlandı",
+      "Kabin taşıyıcı halat ve klamens kontrolü",
+      "Kabin frenleme regülatör halat kontrolü",
+      "Kabin patenleri ayarı ve etek sacı kontrolü",
+      "Kabin frenleme switch kontrolü",
+      "Kabin kapısı mekanizma kontrolü",
+      "Kabin kapısı makara ve switch fiş kontak kontrolü",
+      "Kapı açma POMPA kontrolü",
+      "Kabin içi butonları, alarm diyafon fan kontrolü",
+      "Fotosel kontrolü",
+      "Kuyu dibi alarmı ve stop buton kontrolü",
+      "Kuyu aydınlatması ve priz kontrolü",
+      "Ağırlık separatör sacı kontrolü",
+      "Regülatör kasnak ve switch kontrolü",
+      "Makine-motor kontrolü ve temizliği",
+      "Tahrik, saptırma kasnaklarının kontrolü",
+      "Fren ve balata kontrolü",
+      "Kumanda panosu ve kontaklarının kontrolü",
+      "Ana şalter, elektrik panosu kontrolü",
+      "Ana şalter kaçak akım role kontrolü",
+      "Hız regülatörü, switch ve kasnak kontrolü",
+      "Kat kapılarının mekanizması ve makara kontrolü",
+      "Kat kapı mekanizması, halat ve panel kontrolü",
+      "Kat kapı, fiş kontak kontrolü",
+      "Kat kapı, kilit ve kilit kolları kontrolü",
+      "Kat kapı paten kontrolü",
+      "Kat çağrı butonları ve gösterge kontrolü",
+      "Kat çağrı butonlarının kontrolü"
+    ];
+
+    const tableBody = document.getElementById("table-body");
+    const page = parseInt(new URLSearchParams(window.location.search).get("page")) || 1;
+
+    // Sayfa numarasına göre sabit tarihleri tanımlayalım
+    const pageDates = {
+      1: "16/11/2025",
+      2: "05/11/2024",
+      3: "29/10/2023",
+      4: "19/11/2022",
+      5: "11/11/2021"
+    };
+
+    const date = pageDates[page] || "16/11/2025";
+
+    rows.forEach(row => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `<td>${row}</td><td>+</td><td>+</td><td>${date}</td>`;
+      tableBody.appendChild(tr);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduSafe | Giriş Yap</title>
+
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/fontawesome.css">
+
+  <style>
+    body {
+      background: url('assets/images/banner-01.jpg') center/cover no-repeat fixed;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .login-container {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0, 0, 0, .55);
+      padding: 20px;
+    }
+
+    .login-box {
+      width: 380px;
+      background: #ffffffdd;
+      backdrop-filter: blur(6px);
+      padding: 35px;
+      border-radius: 15px;
+      animation: fadeIn .9s ease;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.35);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .password-wrapper {
+      position: relative;
+    }
+
+    .password-wrapper i {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: #444;
+    }
+
+    #error {
+      display: none;
+      margin-top: 12px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="login-container">
+    <div class="login-box">
+
+      <img src="assets/images/logo.png" width="150" class="d-block mx-auto mb-3">
+
+      <h3 class="text-center mb-4">EduSafe Giriş Paneli</h3>
+
+      <label>Kullanıcı Adı</label>
+      <input type="text" id="username" class="form-control mb-3" placeholder="Kullanıcı adı">
+
+      <label>Şifre</label>
+      <div class="password-wrapper mb-3">
+        <input type="password" id="password" class="form-control" placeholder="Şifre">
+        <i class="fa fa-eye" id="togglePassword"></i>
+      </div>
+
+      <button class="btn btn-primary w-100" onclick="login()">Giriş Yap</button>
+
+      <div id="error" class="text-danger text-center">❌ Hatalı kullanıcı adı veya şifre</div>
+
+      <p class="text-center mt-3">
+        Hesabın yok mu?
+        <a href="kayit.html">Kayıt Ol</a>
+      </p>
+
+    </div>
+  </div>
+
+  <script>
+    /* Varsayılan admin yoksa oluştur */
+    if (!localStorage.getItem("users")) {
+      localStorage.setItem("users", JSON.stringify([
+        { username: "admin", password: "12345", role: "admin" }
+      ]));
+    }
+
+    document.getElementById("togglePassword").onclick = function () {
+      const pass = document.getElementById("password");
+      pass.type = pass.type === "password" ? "text" : "password";
+    };
+
+    function login() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+
+      const found = users.find(u => u.username === username && u.password === password);
+
+      if (!found) {
+        document.getElementById("error").style.display = "block";
+        return;
+      }
+
+      // Aktif kullanıcıyı kaydet
+     localStorage.setItem("activeUser", found.username);
+
+
+      // Admin kontrolü
+      if (found.role === "admin") {
+        window.location.href = "adminpanel.html";
+      } else {
+        window.location.href = "index.html";
+      }
+    }
+  </script>
+
+</body>
+</html>
