@@ -18,8 +18,6 @@ Sistem; bakım formlarından gelen verileri e-posta ile iletir ve yaklaşan / ge
 ---
 
 ## 🧠 Kullanılan Teknolojiler
-<img width="1024" height="1024" alt="Eğitim Güvenliği Logosu" src="https://github.com/user-attachments/assets/b9f98396-733d-4bfc-97ba-baf627e7dd38" />
-
 Bu projede aşağıdaki kütüphaneler kullanılmıştır:
 
 - **Node.js**
