@@ -102,9 +102,9 @@ function checkDates() {
     `;
 
     if (diffDays < 0) {
-      sendMail(item.email, `${item.name} • Bakım Tarihiniz Gecikti`, htmlContent);
+      sendMail(item.email, `${item.name} • Bakım Tarihiniz Yaklaşıyor.`, htmlContent);
     } else if (diffDays <= 7) {
-      sendMail(item.email, `${item.name} • Bakım Tarihiniz Yaklaşıyor`, htmlContent);
+      sendMail(item.email, `${item.name} • Bakım Tarihiniz Gecikti`, htmlContent);
     }
   });
 }
