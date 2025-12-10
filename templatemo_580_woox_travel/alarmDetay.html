@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yangın Alarm Sistemi Bakım Detayları</title>
+
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/fontawesome.css">
+  <link rel="stylesheet" href="assets/css/templatemo-woox-travel.css">
+  <link rel="stylesheet" href="assets/css/owl.css">
+  <link rel="stylesheet" href="assets/css/animate.css">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="header-area header-sticky">
+    <div class="container">
+      <nav class="main-nav">
+        <a href="index.html" class="logo">
+          <img src="assets/images/logo.png" alt="">
+        </a>
+        <ul class="nav">
+          <li><a href="index.html">ANA SAYFA</a></li>
+          <li><a href="BakımOnay.html" class="active">FORM</a></li>
+          <li><a href="kategoriler.html">KATEGORİLER</a></li>
+          <li><a href="hakkimizda.html">HAKKIMIZDA</a></li>
+        </ul>
+        <a class='menu-trigger'><span>Menu</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <div class="container mt-5 pt-4">
+    <h2 class="text-center mb-4">Yangın Alarm Sistemi Bakım Detayları</h2>
+
+    <div class="table-responsive mb-4">
+      <table class="table table-bordered table-striped">
+        <thead class="table-warning">
+          <tr>
+            <th>Kontrol Başlığı</th>
+            <th>Uygun</th>
+            <th>Bakımı Yapıldı</th>
+            <th>Bakım Tarihi</th>
+          </tr>
+        </thead>
+        <tbody id="table-body">
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Sayfalar -->
+    <ul class="pagination justify-content-center mt-4">
+      <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+      <li class="page-item"><a class="page-link" href="?page=2">2</a></li>
+      <li class="page-item"><a class="page-link" href="?page=3">3</a></li>
+      <li class="page-item"><a class="page-link" href="?page=4">4</a></li>
+      <li class="page-item"><a class="page-link" href="?page=5">5</a></li>
+    </ul>
+
+    <div class="text-center mt-4">
+      <a href="kategoriler.html" class="btn btn-warning">← Geri Dön</a>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const rows = [
+      "Dedektörlerin fiziksel kontrolü",
+      "Dedektör fonksiyon testleri",
+      "Manuel butonların kontrolü",
+      "Sirenlerin çalışırlık testi",
+      "Yangın paneli genel durumu",
+      "Panel besleme ve akü kontrolü",
+      "Zone (bölge) hatalarının kontrolü",
+      "Kablolama ve bağlantı kontrolü",
+      "Alarm aktarım rölesi kontrolü",
+      "Yangın ihbar hattı kontrolü",
+      "Tüm bakım işlemleri tamamlandı"
+    ];
+
+    const tableBody = document.getElementById("table-body");
+    const page = parseInt(new URLSearchParams(window.location.search).get("page")) || 1;
+
+    const pageDates = {
+      1: "20/11/2025",
+      2: "05/11/2024",
+      3: "29/10/2023",
+      4: "19/11/2022",
+      5: "11/11/2021"
+    };
+
+    const date = pageDates[page] || "20/11/2025";
+
+    rows.forEach(row => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `<td>${row}</td><td>+</td><td>+</td><td>${date}</td>`;
+      tableBody.appendChild(tr);
+    });
+  </script>
+
+</body>
+</html>
