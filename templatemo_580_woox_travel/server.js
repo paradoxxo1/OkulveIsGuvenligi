@@ -34,7 +34,7 @@ app.post("/form-gonder", async (req, res) => {
         <p><strong>Bakım Yapan Kişi:</strong> ${bakim_yapan}</p>
         <p><strong>Onaylayan Kişi:</strong> ${onaylayan}</p>
         <p><strong>Firma:</strong> ${firma}</p>
-        <p><strong>Bakım Saati:</strong> ${saat}</p>
+        <p><strong>Kategori:</strong> ${katagori}</p>
         <p><strong>Bakım Tarihi:</strong> ${tarih}</p>
         <hr style="margin:25px 0; border:none; border-top:1px solid #ddd;">
         <p style="font-size:13px; color:#777; text-align:center;">Bu form otomatik olarak gönderilmiştir.</p>

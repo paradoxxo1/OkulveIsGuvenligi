@@ -7,8 +7,8 @@
 
   <title>Yangın Tüpü Detay</title>
 
-  <!-- BOOTSTRAP -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- BOOTSTRAP 5 (Modal uyumlu) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Stil Dosyaları -->
   <link rel="stylesheet" href="assets/css/fontawesome.css">
@@ -47,6 +47,13 @@
   <div class="container mt-5 pt-4">
     <h2 class="text-center mb-4">Yangın Tüpü Bakım Detayları</h2>
 
+    <!-- ✔ İmza Butonu -->
+    <div class="text-center mb-4">
+      <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#imzaModal">
+        İmza
+      </button>
+    </div>
+
     <div class="table-responsive">
       <table class="table table-bordered table-striped">
         <thead class="table-warning">
@@ -77,20 +84,40 @@
     </div>
   </div>
 
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- ✔ İmza Modal -->
+  <div class="modal fade" id="imzaModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title">İmza Görüntüle</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body text-center">
+          <img src="assets/images/imza.png" alt="İmza" class="img-fluid rounded shadow">
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
   <script>
     // Yangın tüpü satırları
     const rows = [
       "Tüplerin Basıncı",
       "Tüplerin Doluluk Seviyesi",
       "Kullanım Etiketleri",
-      "Tüp Hortumu Kontrolü"
+      "Tüp Hortumu Kontrolü",
+      "Tüm bakım işlemleri tamamlandı"
     ];
 
     const tableBody = document.getElementById("table-body");
     const page = parseInt(new URLSearchParams(window.location.search).get("page")) || 1;
 
-    // Sayfa numarasına göre sabit tarihleri tanımlayalım
     const pageDates = {
       1: "19/11/2025",
       2: "10/11/2024",
@@ -103,7 +130,13 @@
 
     rows.forEach(row => {
       const tr = document.createElement("tr");
-      tr.innerHTML = `<td>${row}</td><td>+</td><td>+</td><td>${date}</td>`;
+
+      if (row === "Tüm bakım işlemleri tamamlandı") {
+        tr.innerHTML = `<td colspan="3">${row}</td><td>${date}</td>`;
+      } else {
+        tr.innerHTML = `<td>${row}</td><td>+</td><td>+</td><td>${date}</td>`;
+      }
+
       tableBody.appendChild(tr);
     });
   </script>
