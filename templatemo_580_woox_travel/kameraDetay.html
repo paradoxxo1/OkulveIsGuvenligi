@@ -6,7 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Güvenlik Kamerası Detayları</title>
 
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap 5 (Modal uyumlu) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <link rel="stylesheet" href="assets/css/fontawesome.css">
   <link rel="stylesheet" href="assets/css/templatemo-woox-travel.css">
   <link rel="stylesheet" href="assets/css/owl.css">
@@ -32,9 +34,16 @@
     </div>
   </header>
 
-  <!-- CONTENT -->
   <div class="container mt-5 pt-4">
+
     <h2 class="text-center mb-4">Güvenlik Kamerası Bakım Detayları</h2>
+
+    <!-- ✔ İmza Butonu (Asansördekiyle aynı) -->
+    <div class="text-center mb-4">
+      <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#imzaModal">
+        İmza
+      </button>
+    </div>
 
     <div class="table-responsive mb-4">
       <table class="table table-bordered table-striped">
@@ -63,8 +72,27 @@
     </div>
   </div>
 
-  <!-- JS -->
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- ✔ İMZA MODAL (Asansördekiyle %100 aynı) -->
+  <div class="modal fade" id="imzaModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title">İmza Görüntüle</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body text-center">
+          <img src="assets/images/imza.png" alt="İmza" class="img-fluid rounded shadow">
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
   <script>
     const rows = [
       "Kamera lens temizliği",
@@ -100,4 +128,5 @@
   </script>
 
 </body>
+
 </html>

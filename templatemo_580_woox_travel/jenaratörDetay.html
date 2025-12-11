@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Jeneratör Detay</title>
 
-  <!-- BOOTSTRAP -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- BOOTSTRAP 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Stil Dosyaları -->
   <link rel="stylesheet" href="assets/css/fontawesome.css">
@@ -45,6 +45,11 @@
   <div class="container mt-5 pt-4">
     <h2 class="text-center mb-4">Jeneratör Bakım Detayları</h2>
 
+    <!-- İmza Butonu -->
+    <div class="text-center mb-4">
+      <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#imzaModal">İmza</button>
+    </div>
+
     <div class="table-responsive">
       <table class="table table-bordered table-striped">
         <thead class="table-warning">
@@ -55,9 +60,7 @@
             <th>Bakım Tarihi</th>
           </tr>
         </thead>
-        <tbody id="table-body">
-          <!-- JS ile doldurulacak -->
-        </tbody>
+        <tbody id="table-body"></tbody>
       </table>
     </div>
 
@@ -75,7 +78,27 @@
     </div>
   </div>
 
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- İMZA MODAL (Bootstrap 5 uyumlu) -->
+  <div class="modal fade" id="imzaModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title">İmza Görüntüle</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body text-center">
+          <img src="assets/images/imza.png" alt="İmza" class="img-fluid rounded shadow">
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- BOOTSTRAP 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
   <script>
     // Jeneratör bakım satırları
     const rows = [
